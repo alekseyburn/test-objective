@@ -2,8 +2,9 @@
   <div id="app">
 
     <my-select
-      :source="[{key: 'm', value: 'male'}, {key: 'f', value: 'female'}]"
+      :source="source"
     ></my-select>
+
   </div>
 </template>
 
@@ -12,9 +13,11 @@
 
   export default {
     name: 'app',
+    props: {
+    },
     data () {
       return {
-
+        source: [{key: 'm', value: 'male'}, {key: 'f', value: 'female'}],
       }
     },
     components: {

@@ -1,23 +1,22 @@
 <template>
     <div>
       <label>
-        <select>
+        <select v-model="gender">
           <option v-for="item in source">{{ item.value }}</option>
         </select>
       </label>
-
-      <p>Selected Value: {{value}}</p>
+      <p>Selected Gender: {{gender}}</p>
     </div>
 </template>
 
 <script>
   export default {
-    props: {
-      source: '',
-    },
+    props: [
+      'source',
+    ],
     data() {
       return {
-
+        gender: undefined
       }
     }
   }
