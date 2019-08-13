@@ -3,13 +3,21 @@
 
     <my-select
       :source="source"
+      key-field="key"
+      value-field="value"
     ></my-select>
 
+    <hr>
+
+    <my-select-another
+      :source="source"
+    ></my-select-another>
   </div>
 </template>
 
 <script>
   import MySelect from './MySelect.vue'
+  import MySelectAnother from './MySelectAnother.vue'
 
   export default {
     name: 'app',
@@ -18,10 +26,13 @@
     data () {
       return {
         source: [{key: 'm', value: 'male'}, {key: 'f', value: 'female'}],
+        key: undefined,
+        value: undefined
       }
     },
     components: {
       mySelect: MySelect,
+      mySelectAnother: MySelectAnother
     },
   }
 </script>
