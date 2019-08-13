@@ -39,7 +39,8 @@
 
 <style scoped>
   .select {
-    overflow: hidden;
+    position: relative;
+    overflow-y: scroll;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -47,9 +48,12 @@
     flex-direction: column;
     width: 300px;
     box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.75);
+    max-height: 300px;
   }
 
   .search {
+    position: sticky;
+    top: 0;
     width: auto;
     display: flex;
   }
@@ -109,4 +113,24 @@
 
     clip-path: inset(100%);
   }
+
+  ::-webkit-scrollbar {
+    width: 7px;
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(128, 130, 131, 0.25);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgb(81, 234, 255);
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-button {
+    opacity: 0;
+    display: none;
+  }
+
 </style>
