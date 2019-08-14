@@ -2,39 +2,56 @@
   <div>
     <div class="select">
       <label class="select__search search">
-        <input class="search__input" v-model.trim="gender" type="text" placeholder="Выберите значение">
+        <input class="search__input"
+               type="text"
+               placeholder="Выберите значение"
+               :value="gender"
+               @input="e => gender = e.target.value"
+        >
       </label>
 
       <label class="select__radio radio" v-for="item in filtered">
-        <input class="radio__control visually-hidden" type="radio" name="chosen value" :key="item.key"
-               :value="item.value" v-model="gender">
+        <input class="radio__control visually-hidden"
+               type="radio" name="chosen value"
+               :key="item.key"
+               :value="item.value"
+               :checked="shouldBeChecked"
+               @change="e => gender = e.target.value">
         <span class="radio__btn">{{item.value}}</span>
       </label>
     </div>
-
     <p>Выбранное значение: {{gender}}</p>
   </div>
 </template>
 
 <script>
-  export default {
-    props: [
-      'source',
-    ],
-    data () {
-      return {
-        gender: '',
-      }
+export default {
+  model: {
+    prop: 'gender',
+    event: 'change',
+  },
+  props: {
+    source: {},
+    gender: {
+      default: '',
     },
-    computed: {
-      filtered: function () {
-        let that = this
-        return this.source.filter(function (item) {
-          return item.value.toLowerCase().indexOf(that.gender.toLowerCase()) !== -1
-        })
-      },
+  },
+  data () {
+    return {}
+  },
+  methods: {},
+  computed: {
+    filtered: function () {
+      let that = this
+      return this.source.filter(function (item) {
+        return item.value.toLowerCase().indexOf(that.gender.toLowerCase()) !== -1
+      })
     },
-  }
+    shouldBeChecked () {
+      return this.gender == this.value
+    },
+  },
+}
 </script>
 
 <style scoped>
@@ -116,7 +133,6 @@
 
   ::-webkit-scrollbar {
     width: 7px;
-    border-radius: 5px;
   }
 
   ::-webkit-scrollbar-track {

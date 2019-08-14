@@ -11,8 +11,10 @@
 
     <my-select-another
       :source="source"
+      v-model="gender"
     ></my-select-another>
   </div>
+
 </template>
 
 <script>
@@ -27,7 +29,8 @@
       return {
         source: [{key: 'm', value: 'male'}, {key: 'f', value: 'female'}],
         key: undefined,
-        value: undefined
+        value: undefined,
+        gender:''
       }
     },
     components: {
